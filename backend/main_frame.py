@@ -170,7 +170,7 @@ async def students_attendence(username: str):
 
 
 @app.get("/parents/attendence/{username}")
-async def parents_assignments(username: str):
+async def parents_attendence(username: str):
     f1_obj = open(f"\\students\\{username}.txt", 'r')
     temp = f1_obj.readlines()
     attendence_d = temp[0].replace("attendence=", "")
