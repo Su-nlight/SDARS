@@ -19,31 +19,31 @@ class check_password:
         temp_data = find_class(self.username)
         if temp_data == "?":
             raise KeyError
-        command = "select * from class{} where admno={}".format(temp_data, self.username)
+        command = "select * from class{} where adm_no={}".format(temp_data, self.username)
         self.cursor.execute(command)  # extracts the data that has been provided by execution of command
         data = (self.cursor.fetchone()[-1])
-        if data == self.password:
+        if data[11] == self.password:
             self.resp = True
         else:
             self.resp = False
 
     def teacher_login(self):
-        command = "select * from faculty where id={}".format(self.username)
+        command = "select * from faculty where id='{}'".format(self.username)
         self.cursor.execute(command)  # extracts the data that has been provided by execution of command
         data = self.cursor.fetchone()
         if type(data) == None:
             raise KeyError
-        if data == self.password:
+        if data[2] == self.password:
             self.resp = True
         else:
             self.resp = False
 
     def parent_login(self):
         temp_data = find_class(self.username)
-        command = "select * from class{} where admno={}".format(temp_data, self.username)
+        command = "select * from class{} where adm_no={}".format(temp_data, self.username)
         self.cursor.execute(command)  # extracts the data that has been provided by execution of command
         data = (self.cursor.fetchone()[-1])
-        if data == self.password:
+        if data[11] == self.password:
             self.resp = True
         else:
             self.resp = False
@@ -68,10 +68,10 @@ def find_class(username: str):
     global cursor  # using same cursor as defined in the file
     cursor.execute("show tables;")
     tables = cursor.fetchall()
-    tables=tables[0:len(tables)-1]
+    tables = tables[0:len(tables) - 1]
     response = "?"
     for i in tables:
-        cursor.execute("select * from {} where admno='{}'".format(i[0], username))
+        cursor.execute("select * from {} where adm_no='{}'".format(i[0], username))
         r_val = cursor.fetchall()  # extracts the data that has been provided by execution of command
         if len(r_val) == 1:
             response = i[0][-3:]  # change index value as per need in here
