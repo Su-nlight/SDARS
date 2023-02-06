@@ -23,7 +23,7 @@ class circulars:
         for file_name in self.directory:
             # there is a great chance of server breakdown at this point, because in case there are many circulars the
             # whole server could experience a great ram usage and lag.
-            with open(file_name, "rb") as file_obj:
+            with open(f"C:\\Users\\Sumit\\PycharmProjects\\csproject\\circular_class{self.student_class}\\{file_name}", "rb") as file_obj:
                 data = pickle.load(file_obj).copy()
             self.data[file_name] = data.copy()
             data.clear()
@@ -56,7 +56,7 @@ class assignments:
         for file in self.directory:
             # there is a great chance of server breakdown at this point, because in case there are many assignments the
             # whole server could experience a great ram usage and lag.
-            file_obj = open(file, "r")
+            file_obj = open(f"C:\\Users\\Sumit\\PycharmProjects\\csproject\\assignments_class{self.class_n_sec}\\{file}", "r")
             self.total_data[file] = file_obj.readlines()
         return self.total_data.copy()
 
