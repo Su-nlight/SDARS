@@ -32,7 +32,7 @@ async def student_circulars(username: str):
     if class_n_sec == "?":
         return {"data": "username not found"}
     else:
-        obj = file_functions.circulars(student_class=class_n_sec)
+        obj = file_functions.circulars(student_class=class_n_sec[1:3])
         return obj.get_data()
 
 
@@ -56,7 +56,7 @@ async def parent_circulars(username: str):
     if class_n_sec == "?":
         return {"data": "username not found"}
     else:
-        object = file_functions.circulars(student_class=class_n_sec)
+        object = file_functions.circulars(student_class=class_n_sec[1:3])
         return object.get_data()
 
 
