@@ -74,7 +74,7 @@ def find_class(username: str):
         cursor.execute("select * from {} where adm_no='{}'".format(i[0], username))
         r_val = cursor.fetchall()  # extracts the data that has been provided by execution of command
         if len(r_val) == 1:
-            response = i[0][-3:]  # change index value as per need in here
+            response = i[0][-4:]  # change index value as per need in here
             break
         else:
             continue
