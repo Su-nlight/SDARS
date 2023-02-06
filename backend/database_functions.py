@@ -22,7 +22,7 @@ class check_password:
         command = "select * from class{} where adm_no={}".format(temp_data, self.username)
         self.cursor.execute(command)  # extracts the data that has been provided by execution of command
         data = (self.cursor.fetchone()[-1])
-        if data[11] == self.password:
+        if data == self.password:
             self.resp = True
         else:
             self.resp = False
@@ -43,7 +43,7 @@ class check_password:
         command = "select * from class{} where adm_no={}".format(temp_data, self.username)
         self.cursor.execute(command)  # extracts the data that has been provided by execution of command
         data = (self.cursor.fetchone()[-1])
-        if data[11] == self.password:
+        if data == self.password:
             self.resp = True
         else:
             self.resp = False
